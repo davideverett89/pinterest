@@ -1,0 +1,32 @@
+{
+    "board1" : {
+      "name": "Food",
+      "description": "A collection of my favorite foods and recipes.",
+      "uid": "jrqYaatiEyeCxzgXIxshHR1BSLS2"
+    },
+      "board2" : {
+      "name": "Travel",
+      "description": "A collection of places I've been or want to go.",
+      "uid": "123456789"
+    },
+        "board3" : {
+      "name": "Dogs",
+      "description": "A collection of my favorite dogs.",
+      "uid": "jrqYaatiEyeCxzgXIxshHR1BSLS2"
+    },
+        "board4" : {
+      "name": "Cats",
+      "description": "A collection of my favorite cats.",
+      "uid": "123456789"
+    },
+      "board5" : {
+      "name": "Guitars",
+      "description": "A collection of some of my favorite guitars.",
+      "uid": "jrqYaatiEyeCxzgXIxshHR1BSLS2"
+    },
+       "board6" : {
+      "name": "Fun",
+      "description": "A collection of my favorite hobbies and activities.",
+      "uid": "jrqYaatiEyeCxzgXIxshHR1BSLS2"
+    }
+}
