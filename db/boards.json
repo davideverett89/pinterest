@@ -2,7 +2,7 @@
     "board1" : {
       "name": "Food",
       "description": "A collection of my favorite foods and recipes.",
-      "uid": "jrqYaatiEyeCxzgXIxshHR1BSLS2"
+      "uid": "7mXvHCcxSfMEl2Ue58f7bpcaZll1"
     },
       "board2" : {
       "name": "Travel",
@@ -12,7 +12,7 @@
         "board3" : {
       "name": "Dogs",
       "description": "A collection of my favorite dogs.",
-      "uid": "jrqYaatiEyeCxzgXIxshHR1BSLS2"
+      "uid": "7mXvHCcxSfMEl2Ue58f7bpcaZll1"
     },
         "board4" : {
       "name": "Cats",
@@ -22,11 +22,11 @@
       "board5" : {
       "name": "Guitars",
       "description": "A collection of some of my favorite guitars.",
-      "uid": "jrqYaatiEyeCxzgXIxshHR1BSLS2"
+      "uid": "7mXvHCcxSfMEl2Ue58f7bpcaZll1"
     },
        "board6" : {
       "name": "Fun",
       "description": "A collection of my favorite hobbies and activities.",
-      "uid": "jrqYaatiEyeCxzgXIxshHR1BSLS2"
+      "uid": "7mXvHCcxSfMEl2Ue58f7bpcaZll1"
     }
 }
