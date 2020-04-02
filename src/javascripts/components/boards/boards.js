@@ -7,6 +7,17 @@ import boardData from '../../helpers/data/boardData';
 
 import './boards.scss';
 
+const removeBoard = (e) => {
+  const boardId = e.target.closest('.card').id;
+  boardData.deleteBoard(boardId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printBoards();
+      utils.printToDom('singleView', '');
+    })
+    .catch((err) => console.error('Something is not right', err));
+};
+
 const printBoards = () => {
   const myUid = firebase.auth().currentUser.uid;
   boardData.getBoardsByUid(myUid)
@@ -19,6 +30,7 @@ const printBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('boards', domString);
+      $('body').on('click', '.delete-board', removeBoard);
     })
     .catch((err) => console.error('Print boards is not working', err));
 };

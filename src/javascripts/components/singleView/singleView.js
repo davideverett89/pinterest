@@ -10,7 +10,10 @@ const buildSingleView = (e) => {
     .then((pins) => {
       let domString = '';
       pins.forEach((pin) => {
+        domString += `<div id="${pin.id}">`;
+        domString += '<button class="delete-pin"><i class="far fa-times-circle"></i></button>';
         domString += `<img class="pin-image" src="${pin.imageUrl}" alt="${pin.id}" />`;
+        domString += '</div>';
         console.error(pin.imageUrl);
       });
       utils.printToDom('singleView', domString);
