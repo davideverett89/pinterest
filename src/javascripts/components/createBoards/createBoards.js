@@ -6,6 +6,7 @@ const boardMaker = (board) => {
   domString += '        <div class="card-body">';
   domString += `            <p>${board.description}</p>`;
   domString += '            <button class="single-view btn btn-outline-info"><i class="far fa-question-circle"></i></button>';
+  domString += '            <button class="delete-board btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>';
   domString += '        </div>';
   domString += '    </div>';
   domString += '</div>';

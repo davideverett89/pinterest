@@ -8,13 +8,17 @@ const getBoardsByUid = (uid) => new Promise((resolve, reject) => {
     .then((response) => {
       const myBoards = response.data;
       const boards = [];
-      Object.keys(myBoards).forEach((boardId) => {
-        myBoards[boardId].id = boardId;
-        boards.push(myBoards[boardId]);
-      });
+      if (myBoards) {
+        Object.keys(myBoards).forEach((boardId) => {
+          myBoards[boardId].id = boardId;
+          boards.push(myBoards[boardId]);
+        });
+      }
       resolve(boards);
     })
     .catch((err) => reject(err));
 });
 
-export default { getBoardsByUid };
+const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId}.json`);
+
+export default { getBoardsByUid, deleteBoard };
