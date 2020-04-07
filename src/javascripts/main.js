@@ -9,6 +9,8 @@ import auth from './components/auth/auth';
 import authData from './helpers/data/authData';
 import logout from './components/logout/logout';
 import singleView from './components/singleView/singleView';
+import addBoard from './components/addBoard/addBoard';
+import addPin from './components/addPin/addPin';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -16,6 +18,8 @@ const init = () => {
   auth.createSignInButton();
   authData.checkLoginStatus();
   logout.logoutEvent();
+  $('#add-board-button').click(addBoard.buildAddBoardForm);
+  $('#add-pin-button').click(addPin.buildAddPinForm);
   $('body').on('click', '.single-view', singleView.buildSingleView);
   $('#exit-single-view').click(singleView.closeSingleView);
 };
