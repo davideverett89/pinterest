@@ -21,7 +21,7 @@ const init = () => {
   $('#add-board-button').click(addBoard.buildAddBoardForm);
   $('#add-pin-button').click(addPin.buildAddPinForm);
   $('body').on('click', '.single-view', singleView.buildSingleView);
-  $('#exit-single-view').click(singleView.closeSingleView);
+  $('body').on('click', '.delete-pin', singleView.removePin);
 };
 
 init();
