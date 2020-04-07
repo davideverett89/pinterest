@@ -1,6 +1,7 @@
 import pinData from '../../helpers/data/pinData';
 import utils from '../../helpers/utils';
 import singleViewModal from '../singleViewModal/singleViewModal';
+import addPin from '../addPin/addPin';
 
 import './singleView.scss';
 
@@ -45,6 +46,7 @@ const buildSingleView = (e) => {
       utils.printToDom('singleView', domString);
       $('#single-view-modal').modal('show');
       $('#exit-single-view').click(closeSingleView);
+      $('#add-pin-button').click(addPin.buildAddPinForm);
     })
     .catch((err) => console.error('You fucked up', err));
 };

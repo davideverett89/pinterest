@@ -19,9 +19,9 @@ const init = () => {
   authData.checkLoginStatus();
   logout.logoutEvent();
   $('#add-board-button').click(addBoard.buildAddBoardForm);
-  $('#add-pin-button').click(addPin.buildAddPinForm);
   $('body').on('click', '.single-view', singleView.buildSingleView);
   $('body').on('click', '.delete-pin', singleView.removePin);
+  $('body').on('click', '.submit-pin', addPin.addPinEvent);
 };
 
 init();
