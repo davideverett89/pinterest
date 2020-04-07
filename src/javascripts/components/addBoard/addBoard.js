@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import utils from '../../helpers/utils';
+import addBoardModal from '../addBoardModal/addBoardModal';
 import boardData from '../../helpers/data/boardData';
 
 const addBoardEvent = () => {
@@ -17,6 +18,7 @@ const addBoardEvent = () => {
 };
 
 const buildAddBoardForm = () => {
+  addBoardModal.buildAddBoardModal();
   let domString = '';
   domString += '<form id="new-board-form">';
   domString += '    <div class="form-group">';
