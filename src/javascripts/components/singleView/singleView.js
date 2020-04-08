@@ -12,7 +12,7 @@ const closeSingleView = () => {
 
 const removePin = (e) => {
   const pinId = e.target.closest('.pin-container').id;
-  const boardId = e.target.closest('.modal-content').id;
+  const { boardId } = e.target.closest('.modal-content').dataset;
   console.error(pinId);
   pinData.deletePinsByPinId(pinId)
     .then(() => {
