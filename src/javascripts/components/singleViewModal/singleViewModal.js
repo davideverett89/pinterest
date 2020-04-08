@@ -4,7 +4,7 @@ const buildSingleViewModal = (boardId) => {
   let domString = '';
   domString += '<div class="modal fade" id="single-view-modal" tabindex="-1" role="dialog" aria-hidden="true">';
   domString += '    <div class="modal-dialog" role="document">';
-  domString += `        <div id="${boardId}" class="modal-content">`;
+  domString += `        <div data-board-id="${boardId}" class="modal-content">`;
   domString += '            <div class="modal-header">';
   domString += '                <button id="exit-single-view" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>';
   domString += '                <button id="add-pin-button" class="p-2 nav-link btn btn-outline-success"><i class="fas fa-plus-circle"></i></button>';

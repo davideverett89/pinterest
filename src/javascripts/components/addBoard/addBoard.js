@@ -4,17 +4,22 @@ import 'firebase/auth';
 import utils from '../../helpers/utils';
 import addBoardModal from '../addBoardModal/addBoardModal';
 import boardData from '../../helpers/data/boardData';
+import boards from '../boards/boards';
 
-const addBoardEvent = () => {
-  const myUid = firebase.auth().currentUser.uid;
+const addBoardEvent = (e) => {
+  e.preventDefault();
   const newBoard = {
     name: $('#board-name').val(),
     description: $('#board-description').val(),
-    uid: myUid,
+    uid: firebase.auth().currentUser.uid,
   };
-  boardData.setBoard(newBoard);
-  $('#new-board-form').trigger('reset');
-  $('#add-board-modal').modal('hide');
+  boardData.addBoard(newBoard)
+    .then(() => {
+      $('#new-board-form').trigger('reset');
+      $('#add-board-modal').modal('hide');
+      boards.printBoards();
+    })
+    .catch((err) => console.error('Could not add a new board', err));
 };
 
 const buildAddBoardForm = () => {
