@@ -1,8 +1,17 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-body {
-    background-color: blanchedalmond;
+nav {
+    border: 1px solid black;
+}
+
+#logout-button {
+    border: 1px solid black;
+}
+
+#add-board-button {
+    color: white;
+    border: 1px solid black;
 }
 
 .disappear {

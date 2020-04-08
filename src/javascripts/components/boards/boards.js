@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-import createBoards from '../createBoards/createBoards';
+import createSingleBoard from '../createSingleBoard/createSingleBoard';
 import utils from '../../helpers/utils';
 import boardData from '../../helpers/data/boardData';
 import pinData from '../../helpers/data/pinData';
@@ -31,10 +31,10 @@ const printBoards = () => {
   boardData.getBoardsByUid(myUid)
     .then((boards) => {
       let domString = '';
-      domString += '<h1 class="display-4">My Boards</h1>';
-      domString += '<div class="d-flex flex-wrap">';
+      domString += '<h1 id="board-header" class="p-3 display-4">My Boards</h1>';
+      domString += '<div id="board-container" class="p-3 d-flex flex-wrap">';
       boards.forEach((board) => {
-        domString += createBoards.boardMaker(board);
+        domString += createSingleBoard.boardMaker(board);
       });
       domString += '</div>';
       utils.printToDom('boards', domString);
