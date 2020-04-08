@@ -31,7 +31,7 @@ const printBoards = () => {
   boardData.getBoardsByUid(myUid)
     .then((boards) => {
       let domString = '';
-      domString += '<h1 class="display-4">Boards</h1>';
+      domString += '<h1 class="display-4">My Boards</h1>';
       domString += '<div class="d-flex flex-wrap">';
       boards.forEach((board) => {
         domString += createBoards.boardMaker(board);
