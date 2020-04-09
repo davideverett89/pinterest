@@ -18,7 +18,7 @@ const addPinEvent = (e) => {
       pinData.getPinsByBoardId(boardId).then((pins) => {
         let domString = '';
         pins.forEach((pin) => {
-          domString += `<div class="pin-container" id="${pin.id}">`;
+          domString += `<div class="col-6 pin-container" id="${pin.id}">`;
           domString += '<button class="delete-pin"><i class="far fa-times-circle"></i></button>';
           domString += `<img class="pin-image" src="${pin.imageUrl}" alt="${pin.id}" />`;
           domString += '</div>';
@@ -31,7 +31,8 @@ const addPinEvent = (e) => {
 
 const buildAddPinForm = (e) => {
   const { boardId } = e.target.closest('.modal-content').dataset;
-  addPinModal.buildAddPinModal();
+  const { boardName } = e.target.dataset;
+  addPinModal.buildAddPinModal(boardName);
   let domString = '';
   domString += '<form id="new-pin-form">';
   domString += '    <div class="form-group">';
