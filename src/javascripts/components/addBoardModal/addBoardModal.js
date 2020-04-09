@@ -1,10 +1,12 @@
 import utils from '../../helpers/utils';
 
+import './addBoardModal.scss';
+
 const buildAddBoardModal = () => {
   let domString = '';
   domString += '<div class="modal fade" id="add-board-modal" tabindex="-1" role="dialog" aria-hidden="true">';
   domString += '    <div class="modal-dialog" role="document">';
-  domString += '        <div class="modal-content">';
+  domString += '        <div id="add-board-modal-content" class="modal-content">';
   domString += '            <div class="modal-header">';
   domString += '                <h2>Add A New Board</h2>';
   domString += '            </div>';
