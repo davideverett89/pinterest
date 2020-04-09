@@ -38,7 +38,7 @@ const buildAddPinForm = (e) => {
   domString += '        <label for="pin-image">Pin Image</label>';
   domString += '        <input type="text" class="form-control" id="pin-image" placeholder="Pin image here....">';
   domString += '    </div>';
-  domString += `    <button data-board-id="${boardId}" type="button" class="btn btn-primary submit-pin">Add Pin</button>`;
+  domString += `    <button data-board-id="${boardId}" type="button" class="btn btn-success submit-pin">Add Pin</button>`;
   domString += '</form>';
   utils.printToDom('addPin', domString);
   $('#add-pin-modal').modal('show');

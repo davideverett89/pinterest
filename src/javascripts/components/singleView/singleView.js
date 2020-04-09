@@ -20,7 +20,7 @@ const removePin = (e) => {
         .then((pins) => {
           let domString = '';
           pins.forEach((pin) => {
-            domString += `<div class="pin-container" id="${pin.id}">`;
+            domString += `<div class="col-6 pin-container" id="${pin.id}">`;
             domString += '<button class="delete-pin"><i class="far fa-times-circle"></i></button>';
             domString += `<img class="pin-image" src="${pin.imageUrl}" alt="${pin.id}" />`;
             domString += '</div>';
@@ -38,7 +38,7 @@ const buildSingleView = (e) => {
     .then((pins) => {
       let domString = '';
       pins.forEach((pin) => {
-        domString += `<div class="pin-container" id="${pin.id}">`;
+        domString += `<div class="col-6 pin-container" id="${pin.id}">`;
         domString += '<button class="delete-pin"><i class="far fa-times-circle"></i></button>';
         domString += `<img class="pin-image" src="${pin.imageUrl}" alt="${pin.id}" />`;
         domString += '</div>';

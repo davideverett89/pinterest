@@ -1,0 +1,14 @@
+.board-separator {
+    margin: 25px 0;
+    .my-board {
+        border: 2px solid black;
+        #single-board-header {
+            border-bottom: 1px solid white;
+            width: 95%;
+            margin: 0 auto;
+        }
+        i {
+            color: white;
+        }
+    }
+}
