@@ -10,18 +10,23 @@ import boards from '../boards/boards';
 
 const addBoardEvent = (e) => {
   e.preventDefault();
-  const newBoard = {
-    name: $('#board-name').val(),
-    description: $('#board-description').val(),
-    uid: firebase.auth().currentUser.uid,
-  };
-  boardData.addBoard(newBoard)
-    .then(() => {
-      $('#new-board-form').trigger('reset');
-      $('#add-board-modal').modal('hide');
-      boards.printBoards();
-    })
-    .catch((err) => console.error('Could not add a new board', err));
+  const newName = $('#board-name').val();
+  const newDescription = $('#board-description').val();
+  const blankCheck = [newName, newDescription].some((inputValue) => /^\s*$/.test(inputValue));
+  if (!blankCheck) {
+    const newBoard = {
+      name: newName,
+      description: newDescription,
+      uid: firebase.auth().currentUser.uid,
+    };
+    boardData.addBoard(newBoard)
+      .then(() => {
+        $('#new-board-form').trigger('reset');
+        $('#add-board-modal').modal('hide');
+        boards.printBoards();
+      })
+      .catch((err) => console.error('Could not add a new board', err));
+  }
 };
 
 const buildAddBoardForm = () => {
