@@ -1,6 +1,7 @@
 import utils from '../../helpers/utils';
 import addPinModal from '../addPinModal/addPinModal';
 import pinData from '../../helpers/data/pinData';
+import smash from '../../helpers/data/smash';
 
 const addPinEvent = (e) => {
   const { boardId } = e.target.dataset;
@@ -15,24 +16,25 @@ const addPinEvent = (e) => {
       .then(() => {
         $('#new-pin-form').trigger('reset');
         $('#add-pin-modal').modal('hide');
-        pinData.getPinsByBoardId(boardId).then((pins) => {
-          let domString = '';
-          pins.forEach((pin) => {
-            domString += `<div class="col-6 pin-container" id="${pin.id}">`;
-            domString += '<button class="delete-pin"><i class="far fa-times-circle"></i></button>';
-            domString += `<img class="pin-image" src="${pin.imageUrl}" alt="${pin.id}" />`;
-            domString += '</div>';
+        smash.getSingleBoardWithPins(boardId)
+          .then((singleBoard) => {
+            let domString = '';
+            singleBoard.pins.forEach((pin) => {
+              domString += `<div class="col-6 pin-container" id="${pin.id}">`;
+              domString += '<button class="delete-pin"><i class="far fa-times-circle"></i></button>';
+              domString += `<img class="pin-image" src="${pin.imageUrl}" alt="${pin.id}" />`;
+              domString += '</div>';
+            });
+            utils.printToDom('singleView', domString);
+            $('#single-view-modal').css('overflow', 'auto');
           });
-          utils.printToDom('singleView', domString);
-          $('#single-view-modal').css('overflow', 'auto');
-        });
       })
       .catch((err) => console.error('Could not add a new pin', err));
   }
 };
 
 const buildAddPinForm = (e) => {
-  const { boardId } = e.target.closest('.modal-content').dataset;
+  const { boardId } = e.target.closest('.single-view-modal').dataset;
   const { boardName } = e.target.dataset;
   addPinModal.buildAddPinModal(boardName);
   let domString = '';
