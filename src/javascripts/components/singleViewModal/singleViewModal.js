@@ -10,7 +10,7 @@ const buildSingleViewModal = (boardId) => {
       let domString = '';
       domString += '<div class="modal fade" id="single-view-modal" tabindex="-1" role="dialog" aria-hidden="true">';
       domString += '    <div class="modal-dialog" role="document">';
-      domString += `        <div id="single-view-content" data-board-id="${boardId}" class="bg-primary modal-content">`;
+      domString += `        <div id="single-view-content" data-board-id="${boardId}" class="bg-primary modal-content single-view-modal">`;
       domString += '            <div class="bg-light modal-header">';
       domString += '                <button id="exit-single-view" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>';
       domString += `                <h3>${currentBoard.name}</h3>`;

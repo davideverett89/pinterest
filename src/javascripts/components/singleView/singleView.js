@@ -1,4 +1,5 @@
 import pinData from '../../helpers/data/pinData';
+import smash from '../../helpers/data/smash';
 import utils from '../../helpers/utils';
 import singleViewModal from '../singleViewModal/singleViewModal';
 import addPin from '../addPin/addPin';
@@ -12,14 +13,13 @@ const closeSingleView = () => {
 
 const removePin = (e) => {
   const pinId = e.target.closest('.pin-container').id;
-  const { boardId } = e.target.closest('.modal-content').dataset;
-  console.error(pinId);
+  const { boardId } = e.target.closest('.single-view-modal').dataset;
   pinData.deletePinsByPinId(pinId)
     .then(() => {
-      pinData.getPinsByBoardId(boardId)
-        .then((pins) => {
+      smash.getSingleBoardWithPins(boardId)
+        .then((singleBoard) => {
           let domString = '';
-          pins.forEach((pin) => {
+          singleBoard.pins.forEach((pin) => {
             domString += `<div class="col-6 pin-container" id="${pin.id}">`;
             domString += '<button class="delete-pin"><i class="far fa-times-circle"></i></button>';
             domString += `<img class="pin-image" src="${pin.imageUrl}" alt="${pin.id}" />`;
@@ -28,16 +28,16 @@ const removePin = (e) => {
           utils.printToDom('singleView', domString);
         });
     })
-    .catch((err) => console.error('Something is wrong', err));
+    .catch((err) => console.error('Something isn\'t right', err));
 };
 
 const buildSingleView = (e) => {
   const boardId = e.target.closest('.card').id;
   singleViewModal.buildSingleViewModal(boardId);
-  pinData.getPinsByBoardId(boardId)
-    .then((pins) => {
+  smash.getSingleBoardWithPins(boardId)
+    .then((singleBoard) => {
       let domString = '';
-      pins.forEach((pin) => {
+      singleBoard.pins.forEach((pin) => {
         domString += `<div class="col-6 pin-container" id="${pin.id}">`;
         domString += '<button class="delete-pin"><i class="far fa-times-circle"></i></button>';
         domString += `<img class="pin-image" src="${pin.imageUrl}" alt="${pin.id}" />`;
@@ -48,7 +48,7 @@ const buildSingleView = (e) => {
       $('#exit-single-view').click(closeSingleView);
       $('#add-pin-button').click(addPin.buildAddPinForm);
     })
-    .catch((err) => console.error('You fucked up', err));
+    .catch((err) => console.error('Problem with smash function.', err));
 };
 
 export default { buildSingleView, closeSingleView, removePin };
