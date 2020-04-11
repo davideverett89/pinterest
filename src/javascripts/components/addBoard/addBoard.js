@@ -4,7 +4,6 @@ import 'firebase/auth';
 import './addBoard.scss';
 
 import utils from '../../helpers/utils';
-import addBoardModal from '../addBoardModal/addBoardModal';
 import boardData from '../../helpers/data/boardData';
 import boards from '../boards/boards';
 
@@ -30,7 +29,6 @@ const addBoardEvent = (e) => {
 };
 
 const buildAddBoardForm = () => {
-  addBoardModal.buildAddBoardModal();
   let domString = '';
   domString += '<form id="new-board-form">';
   domString += '    <div class="form-group">';
@@ -43,7 +41,7 @@ const buildAddBoardForm = () => {
   domString += '    </div>';
   domString += '    <button type="button" id="add-board" class="btn btn-success">Add Board</button>';
   domString += '</form>';
-  utils.printToDom('addBoard', domString);
+  utils.printToDom('add-board-view', domString);
   $('#add-board-modal').modal('show');
   $('#add-board').click(addBoardEvent);
 };

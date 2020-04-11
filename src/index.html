@@ -30,8 +30,22 @@
           <div id="single-view" class="col-6 m-auto text-center disappear"></div>
         </div>
       </div>
-      <div id="add-board-view"></div>
-      <div id="add-pin-view"></div>
+      <div class="modal fade" id="add-board-modal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div id="add-board-modal-content" class="modal-content">
+                  <div class="modal-header">
+                      <h2>Add A New Board</h2>
+                  </div>
+                  <div id="add-board-view" class="modal-body"></div>
+              </div>
+          </div>
+      </div>
+      <div class="modal fade" id="add-pin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div id="add-pin-modal-content" class="modal-content">
+              </div>
+          </div>
+      </div>
       <!-- <div class="container-fluid">
         <div class="row">
           <div class="col-9">

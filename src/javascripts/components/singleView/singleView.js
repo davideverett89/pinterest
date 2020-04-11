@@ -74,8 +74,8 @@ const singleViewEvents = (e) => {
 };
 
 const singleViewActionEvents = () => {
-  $('#close-single-view-button').click(closeSingleView);
-  $('#add-pin-button').click(addPin.buildAddPinForm);
+  $('body').on('click', '#close-single-view-button', closeSingleView);
+  $('body').on('click', '#add-pin-button', addPin.buildAddPinForm);
   $('body').on('click', '.delete-pin', removePin);
 };
 
