@@ -5,6 +5,7 @@ import createSingleBoard from '../createSingleBoard/createSingleBoard';
 import utils from '../../helpers/utils';
 import boardData from '../../helpers/data/boardData';
 import pinData from '../../helpers/data/pinData';
+import singleView from '../singleView/singleView';
 
 import './boards.scss';
 
@@ -38,6 +39,7 @@ const printBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('boards', domString);
+      $('body').on('click', '.single-view-button', singleView.singleViewEvents);
       $('body').on('click', '.delete-board', removeBoard);
     })
     .catch((err) => console.error('Print boards is not working', err));
