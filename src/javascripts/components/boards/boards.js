@@ -10,6 +10,22 @@ import addBoard from '../addBoard/addBoard';
 
 import './boards.scss';
 
+const printBoards = () => {
+  const myUid = firebase.auth().currentUser.uid;
+  boardData.getBoardsByUid(myUid)
+    .then((boards) => {
+      let domString = '';
+      domString += '<h1 id="board-header" class="p-3 display-4">My Boards</h1>';
+      domString += '<div id="board-container" class="p-3 d-flex flex-wrap">';
+      boards.forEach((board) => {
+        domString += createSingleBoard.boardMaker(board);
+      });
+      domString += '</div>';
+      utils.printToDom('boards', domString);
+    })
+    .catch((err) => console.error('Print boards is not working', err));
+};
+
 const addBoardEvent = (e) => {
   e.preventDefault();
   const newName = $('#board-name').val();
@@ -23,10 +39,10 @@ const addBoardEvent = (e) => {
     };
     boardData.addBoard(newBoard)
       .then(() => {
+        console.error(newBoard);
         $('#new-board-form').trigger('reset');
         $('#add-board-modal').modal('hide');
-        // eslint-disable-next-line no-use-before-define
-        printBoards();
+        printBoards(e.data);
       })
       .catch((err) => console.error('Could not add a new board', err));
   }
@@ -43,27 +59,10 @@ const removeBoard = (e) => {
             pinData.deletePinsByPinId(pinId);
           });
         });
-      // eslint-disable-next-line no-use-before-define
       printBoards();
       utils.printToDom('singleView', '');
     })
     .catch((err) => console.error('Something is not right', err));
-};
-
-const printBoards = () => {
-  const myUid = firebase.auth().currentUser.uid;
-  boardData.getBoardsByUid(myUid)
-    .then((boards) => {
-      let domString = '';
-      domString += '<h1 id="board-header" class="p-3 display-4">My Boards</h1>';
-      domString += '<div id="board-container" class="p-3 d-flex flex-wrap">';
-      boards.forEach((board) => {
-        domString += createSingleBoard.boardMaker(board);
-      });
-      domString += '</div>';
-      utils.printToDom('boards', domString);
-    })
-    .catch((err) => console.error('Print boards is not working', err));
 };
 
 const boardEvents = () => {

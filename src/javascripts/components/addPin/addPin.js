@@ -12,7 +12,7 @@ const buildAddPinForm = (e) => {
   domString += '    </div>';
   domString += `    <button data-board-id="${boardId}" type="button" class="btn btn-success submit-pin">Add Pin</button>`;
   domString += '</form>';
-  utils.printToDom('add-pin-modal-body', domString);
+  utils.printToDom('add-pin-view', domString);
   $('#add-pin-modal').modal('show');
 };
 
