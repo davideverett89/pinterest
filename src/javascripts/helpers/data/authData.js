@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import boards from '../../components/boards/boards';
+import singleView from '../../components/singleView/singleView';
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -11,6 +12,8 @@ const checkLoginStatus = () => {
       $('#logout-button').removeClass('disappear');
       $('#boards').removeClass('disappear');
       boards.printBoards();
+      boards.boardEvents();
+      singleView.singleViewActionEvents();
     } else {
       $('#home').removeClass('disappear');
       $('#add-board-button').addClass('disappear');

@@ -1,0 +1,12 @@
+.single-pin-container {
+    margin: 10px 0;
+    .delete-pin {
+        position: absolute;
+        border: 1px solid white;
+    }
+    .pin-image {
+        border: 2px solid white;
+        width: 250px;
+        height: 200px;
+    }
+}

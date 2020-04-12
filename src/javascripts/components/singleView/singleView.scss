@@ -1,12 +1,19 @@
-.pin-container {
-    margin: 10px 0;
-    .delete-pin {
-        position: absolute;
-        border: 1px solid white;
-    }
-    .pin-image {
-        border: 2px solid white;
-        width: 200px;
-        height: 200px;
-    }
+#single-board-header {
+    border-bottom: 1px solid black;
+    width: 97%;
+    margin: 5px auto;
+}
+
+#close-single-view-button {
+    position: absolute;
+    left: 27px;
+}
+
+#add-pin-button {
+    position: absolute;
+    right: 27px;
+}
+
+#pin-container {
+    border: 2px solid black;
 }

@@ -5,8 +5,32 @@ import createSingleBoard from '../createSingleBoard/createSingleBoard';
 import utils from '../../helpers/utils';
 import boardData from '../../helpers/data/boardData';
 import pinData from '../../helpers/data/pinData';
+import singleView from '../singleView/singleView';
+import addBoard from '../addBoard/addBoard';
 
 import './boards.scss';
+
+const addBoardEvent = (e) => {
+  e.preventDefault();
+  const newName = $('#board-name').val();
+  const newDescription = $('#board-description').val();
+  const blankCheck = [newName, newDescription].some((inputValue) => /^\s*$/.test(inputValue));
+  if (!blankCheck) {
+    const newBoard = {
+      name: newName,
+      description: newDescription,
+      uid: firebase.auth().currentUser.uid,
+    };
+    boardData.addBoard(newBoard)
+      .then(() => {
+        $('#new-board-form').trigger('reset');
+        $('#add-board-modal').modal('hide');
+        // eslint-disable-next-line no-use-before-define
+        printBoards();
+      })
+      .catch((err) => console.error('Could not add a new board', err));
+  }
+};
 
 const removeBoard = (e) => {
   const boardId = e.target.closest('.card').id;
@@ -38,9 +62,15 @@ const printBoards = () => {
       });
       domString += '</div>';
       utils.printToDom('boards', domString);
-      $('body').on('click', '.delete-board', removeBoard);
     })
     .catch((err) => console.error('Print boards is not working', err));
 };
 
-export default { printBoards };
+const boardEvents = () => {
+  $('body').on('click', '#add-board', addBoardEvent);
+  $('body').on('click', '#add-board-button', addBoard.buildAddBoardForm);
+  $('body').on('click', '.single-view-button', singleView.singleViewEvents);
+  $('body').on('click', '.delete-board-button', removeBoard);
+};
+
+export default { printBoards, boardEvents };
