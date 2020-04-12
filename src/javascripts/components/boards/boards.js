@@ -39,7 +39,6 @@ const addBoardEvent = (e) => {
     };
     boardData.addBoard(newBoard)
       .then(() => {
-        console.error(newBoard);
         $('#new-board-form').trigger('reset');
         $('#add-board-modal').modal('hide');
         printBoards(e.data);
