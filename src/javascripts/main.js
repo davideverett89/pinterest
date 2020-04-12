@@ -8,7 +8,6 @@ import home from './components/home/home';
 import auth from './components/auth/auth';
 import authData from './helpers/data/authData';
 import logout from './components/logout/logout';
-import addBoard from './components/addBoard/addBoard';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -16,7 +15,6 @@ const init = () => {
   auth.createSignInButton();
   authData.checkLoginStatus();
   logout.logoutEvent();
-  $('#add-board-button').click(addBoard.buildAddBoardForm);
 };
 
 init();

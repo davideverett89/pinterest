@@ -6,27 +6,14 @@
 
 #close-single-view-button {
     position: absolute;
-    left: 25px;
+    left: 27px;
 }
 
 #add-pin-button {
     position: absolute;
-    right: 25px;
+    right: 27px;
 }
 
 #pin-container {
     border: 2px solid black;
-}
-
-.single-pin-container {
-    margin: 10px 0;
-    .delete-pin {
-        position: absolute;
-        border: 1px solid white;
-    }
-    .pin-image {
-        border: 2px solid white;
-        width: 250px;
-        height: 200px;
-    }
 }

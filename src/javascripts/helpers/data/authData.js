@@ -12,6 +12,7 @@ const checkLoginStatus = () => {
       $('#logout-button').removeClass('disappear');
       $('#boards').removeClass('disappear');
       boards.printBoards();
+      boards.boardEvents();
       singleView.singleViewActionEvents();
     } else {
       $('#home').removeClass('disappear');
