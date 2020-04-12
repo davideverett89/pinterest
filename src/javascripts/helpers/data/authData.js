@@ -11,6 +11,7 @@ const checkLoginStatus = () => {
       $('#add-board-button').removeClass('disappear');
       $('#logout-button').removeClass('disappear');
       $('#boards').removeClass('disappear');
+      $('#empty-page-message').removeClass('disappear');
       boards.printBoards();
       boards.boardEvents();
       singleView.singleViewActionEvents();
@@ -19,6 +20,7 @@ const checkLoginStatus = () => {
       $('#add-board-button').addClass('disappear');
       $('#logout-button').addClass('disappear');
       $('#boards').addClass('disappear');
+      $('#empty-page-message').addClass('disappear');
     }
   });
 };
