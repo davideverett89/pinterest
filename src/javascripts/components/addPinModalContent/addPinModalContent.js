@@ -7,7 +7,7 @@ const buildAddPinModalContent = (boardName) => {
   domString += '<div class="modal-header">';
   domString += `  <h2>Add A New Pin to ${boardName}</h2>`;
   domString += '</div>';
-  domString += '<div id="add-pin-modal-body" class="modal-body"></div>';
+  domString += '<div id="add-pin-view" class="modal-body"></div>';
   utils.printToDom('add-pin-modal-content', domString);
 };
 

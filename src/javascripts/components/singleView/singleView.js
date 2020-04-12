@@ -1,8 +1,12 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 import pinData from '../../helpers/data/pinData';
 import smash from '../../helpers/data/smash';
 import utils from '../../helpers/utils';
 import addPin from '../addPin/addPin';
 import createSinglePin from '../createSinglePin/createSinglePin';
+import editPin from '../editPin/editPin';
 
 import './singleView.scss';
 
@@ -70,11 +74,31 @@ const singleViewEvents = (e) => {
   buildSingleView(boardId);
 };
 
+const editPinEvent = (e) => {
+  const pinId = e.target.closest('.single-pin-container').id;
+  const { boardId } = e.target.closest('.card').dataset;
+  const myUid = firebase.auth().currentUser.uid;
+  editPin.buildEditPinRadios(boardId, pinId, myUid);
+};
+
+const movePin = (e) => {
+  const { pinId, currentBoardId } = e.target.closest('.change-pin-form').dataset;
+  const selectedBoardId = $("input[name='boardRadios']:checked").val();
+  pinData.updatePin(pinId, selectedBoardId)
+    .then(() => {
+      buildSingleView(currentBoardId);
+      $('#edit-pin-modal').modal('hide');
+    })
+    .catch((err) => console.error('Could not update pin', err));
+};
+
 const singleViewActionEvents = () => {
   $('body').on('click', '#close-single-view-button', closeSingleView);
   $('body').on('click', '#add-pin-button', addPin.buildAddPinForm);
   $('body').on('click', '.delete-pin', removePin);
   $('body').on('click', '.submit-pin', addPinEvent);
+  $('body').on('click', '.edit-pin', editPinEvent);
+  $('body').on('click', '#submit-edit-button', movePin);
 };
 
 export default { singleViewEvents, closeSingleView, singleViewActionEvents };
