@@ -70,7 +70,7 @@ const boardEvents = () => {
   $('body').on('click', '#add-board', addBoardEvent);
   $('body').on('click', '#add-board-button', addBoard.buildAddBoardForm);
   $('body').on('click', '.single-view-button', singleView.singleViewEvents);
-  $('body').on('click', '.delete-board', removeBoard);
+  $('body').on('click', '.delete-board-button', removeBoard);
 };
 
 export default { printBoards, boardEvents };
