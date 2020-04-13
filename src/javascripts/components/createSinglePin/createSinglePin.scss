@@ -1,17 +1,15 @@
 .single-pin-container {
     margin: 10px 0;
-    .delete-pin {
+    .image-overlay {
         position: absolute;
+    }
+    .pin-button {
         border: 1px solid white;
     }
-    .edit-pin {
-        position: absolute;
-        border: 1px solid white;
-        left: 230px;
-    };
     .pin-image {
         border: 2px solid white;
-        width: 250px;
-        height: 200px;
+    }
+    .my-dropdown {
+        width: auto;
     }
 }

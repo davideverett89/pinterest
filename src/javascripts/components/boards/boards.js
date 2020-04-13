@@ -25,7 +25,7 @@ const printBoards = () => {
         utils.printToDom('boards', domString);
         utils.printToDom('empty-page-message', '');
       } else {
-        const domString = '<h4>Click the green button to add a board!  >>>>></h4>';
+        const domString = '<h4>Click the green button to add a board!</h4>';
         utils.printToDom('empty-page-message', domString);
         utils.printToDom('boards', '');
       }
