@@ -2,7 +2,7 @@ import './createSingleBoard.scss';
 
 const boardMaker = (board) => {
   let domString = '';
-  domString += '<div class="col-4 board-separator">';
+  domString += '<div class="col-4 col-md-4 board-separator">';
   domString += `    <div id="${board.id}" class="bg-primary text-light card my-board">`;
   domString += `        <h3 id="single-board-header" class="mb-2 p-2">${board.name}</h3>`;
   domString += '        <div class="card-body">';

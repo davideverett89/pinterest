@@ -42,29 +42,29 @@ const closeSingleView = () => {
 
 const removePin = (e) => {
   const pinId = e.target.closest('.single-pin-container').id;
-  const { boardId } = e.target.closest('.card').dataset;
+  const selectedBoardId = e.target.closest('.card').dataset.boardId;
   pinData.deletePinsByPinId(pinId)
     .then(() => {
-      buildSingleView(boardId);
+      buildSingleView(selectedBoardId);
     })
     .catch((err) => console.error('Something isn\'t right', err));
 };
 
 const addPinEvent = (e) => {
-  const { boardId } = e.target.dataset;
-  console.error(boardId);
+  const selectedboardId = e.target.dataset.boardId;
+  console.error(selectedboardId);
   const newImage = $('#pin-image').val();
   const blankCheck = /^\s*$/.test(newImage);
   if (!blankCheck) {
     const newPin = {
       imageUrl: newImage,
-      boardId,
+      selectedboardId,
     };
     pinData.addPin(newPin)
       .then(() => {
         $('#new-pin-form').trigger('reset');
         $('#add-pin-modal').modal('hide');
-        buildSingleView(boardId);
+        buildSingleView(selectedboardId);
       })
       .catch((err) => console.error('Could not add a new pin', err));
   }
@@ -77,15 +77,16 @@ const singleViewEvents = (e) => {
 
 const editPinEvent = (e) => {
   const pinId = e.target.closest('.single-pin-container').id;
-  const { boardId } = e.target.closest('.card').dataset;
+  const selectedboardId = e.target.closest('.card').dataset;
   const myUid = firebase.auth().currentUser.uid;
-  editPin.buildEditPinRadios(boardId, pinId, myUid);
+  editPin.buildEditPinRadios(selectedboardId, pinId, myUid);
 };
 
 const movePin = (e) => {
-  const { pinId, currentBoardId } = e.target.closest('.change-pin-form').dataset;
+  const selectedPinId = e.target.closest('.change-pin-form').dataset.pinId;
+  const currentBoardId = e.target.closest('.change-pin-form').dataset.boardId;
   const selectedBoardId = $("input[name='boardRadios']:checked").val();
-  pinData.updatePin(pinId, selectedBoardId)
+  pinData.updatePin(selectedPinId, selectedBoardId)
     .then(() => {
       buildSingleView(currentBoardId);
       $('#edit-pin-modal').modal('hide');
