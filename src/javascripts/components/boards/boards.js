@@ -23,6 +23,7 @@ const printBoards = () => {
         });
         domString += '</div>';
         utils.printToDom('boards', domString);
+        utils.printToDom('single-view', '');
         utils.printToDom('empty-page-message', '');
       } else {
         const domString = '<h4>Click the green button to add a board!</h4>';
