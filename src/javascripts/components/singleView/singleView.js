@@ -52,6 +52,7 @@ const removePin = (e) => {
 
 const addPinEvent = (e) => {
   const { boardId } = e.target.dataset;
+  console.error(boardId);
   const newImage = $('#pin-image').val();
   const blankCheck = /^\s*$/.test(newImage);
   if (!blankCheck) {
