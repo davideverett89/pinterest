@@ -17,7 +17,7 @@ const buildSingleView = (boardId) => {
       domString += '<div id="single-board-header">';
       domString += '  <button id="close-single-view-button" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>';
       // eslint-disable-next-line max-len
-      domString += `  <button data-board-id="${singleBoard.id}" data-board-name="${singleBoard.name}" id="add-pin-button" class="btn btn-outline-success"><i data-board-name="${singleBoard.name}" class="fas fa-plus-circle"></i></button>`;
+      domString += `  <button data-board-id="${singleBoard.id}" data-board-name="${singleBoard.name}" id="add-pin-button" class="btn btn-outline-success"><i data-board-id="${singleBoard.id}" data-board-name="${singleBoard.name}" class="fas fa-plus-circle"></i></button>`;
       domString += `  <h2 class="p-1 display-4">${singleBoard.name}</h2>`;
       domString += '</div>';
       if (singleBoard.pins.length > 0) {
@@ -58,7 +58,7 @@ const addPinEvent = (e) => {
   if (!blankCheck) {
     const newPin = {
       imageUrl: newImage,
-      selectedboardId,
+      boardId: selectedboardId,
     };
     pinData.addPin(newPin)
       .then(() => {
@@ -77,7 +77,7 @@ const singleViewEvents = (e) => {
 
 const editPinEvent = (e) => {
   const pinId = e.target.closest('.single-pin-container').id;
-  const selectedboardId = e.target.closest('.card').dataset;
+  const selectedboardId = e.target.closest('.card').dataset.boardId;
   const myUid = firebase.auth().currentUser.uid;
   editPin.buildEditPinRadios(selectedboardId, pinId, myUid);
 };

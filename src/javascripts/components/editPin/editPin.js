@@ -7,7 +7,7 @@ const buildEditPinRadios = (currentBoardId, pinId, myUid) => {
   boardData.getBoardsByUid(myUid)
     .then((boards) => {
       let domString = '';
-      domString += `<form data-pin-id="${pinId}" data-current-board-id="${currentBoardId}" class="change-pin-form">`;
+      domString += `<form data-pin-id="${pinId}" data-board-id="${currentBoardId}" class="change-pin-form">`;
       boards.forEach((board, index) => {
         if (currentBoardId !== board.id) {
           domString += '  <div class="form-check">';
