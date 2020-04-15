@@ -35,6 +35,7 @@ const printBoards = () => {
 };
 
 const addBoardEvent = (e) => {
+  console.error('Add board happened.');
   e.preventDefault();
   const newName = $('#board-name').val();
   const newDescription = $('#board-description').val();
@@ -74,9 +75,9 @@ const removeBoard = (e) => {
 
 const boardEvents = () => {
   $('body').on('click', '#add-board', addBoardEvent);
-  $('body').on('click', '#add-board-button', addBoard.buildAddBoardForm);
+  $('#show-add-board-form-button').click(addBoard.buildAddBoardForm);
   $('body').on('click', '.single-view-button', singleView.singleViewEvents);
   $('body').on('click', '.delete-board-button', removeBoard);
 };
 
-export default { printBoards, boardEvents };
+export default { printBoards, boardEvents, addBoardEvent };
