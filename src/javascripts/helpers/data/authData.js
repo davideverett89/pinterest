@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import boards from '../../components/boards/boards';
-// import singleView from '../../components/singleView/singleView';
+import singleView from '../../components/singleView/singleView';
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -14,6 +14,8 @@ const checkLoginStatus = () => {
       $('#empty-page-message').removeClass('disappear');
       $('#single-view').removeClass('disappear');
       boards.printBoards();
+      boards.boardEvents();
+      singleView.singleViewActionEvents();
     } else {
       $('#home').removeClass('disappear');
       $('#show-add-board-form-button').addClass('disappear');
@@ -21,6 +23,8 @@ const checkLoginStatus = () => {
       $('#boards').addClass('disappear');
       $('#empty-page-message').addClass('disappear');
       $('#single-view').addClass('disappear');
+      boards.removeBoardEvents();
+      singleView.removeSingleViewActionEvents();
     }
   });
 };

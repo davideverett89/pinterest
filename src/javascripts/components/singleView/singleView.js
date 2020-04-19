@@ -15,9 +15,11 @@ const buildSingleView = (boardId) => {
     .then((singleBoard) => {
       let domString = '';
       domString += '<div id="single-board-header">';
-      domString += '  <button id="close-single-view-button" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>';
+      domString += '  <div class="d-flex flex-row justify-content-between">';
+      domString += '    <button id="close-single-view-button" class="btn btn-outline-danger"><i class="fas fa-times"></i></button>';
       // eslint-disable-next-line max-len
-      domString += `  <button data-board-id="${singleBoard.id}" data-board-name="${singleBoard.name}" id="add-pin-button" class="btn btn-outline-success"><i data-board-id="${singleBoard.id}" data-board-name="${singleBoard.name}" class="fas fa-plus-circle"></i></button>`;
+      domString += `    <button data-board-id="${singleBoard.id}" data-board-name="${singleBoard.name}" id="add-pin-button" class="btn btn-outline-success"><i data-board-id="${singleBoard.id}" data-board-name="${singleBoard.name}" class="fas fa-plus-circle"></i></button>`;
+      domString += '  </div>';
       domString += `  <h2 class="p-1 display-4">${singleBoard.name}</h2>`;
       domString += '</div>';
       if (singleBoard.pins.length > 0) {
@@ -103,4 +105,18 @@ const singleViewActionEvents = () => {
   $('body').on('click', '#submit-edit-button', movePin);
 };
 
-export default { singleViewEvents, closeSingleView, singleViewActionEvents };
+const removeSingleViewActionEvents = () => {
+  $('body').off('click', '#close-single-view-button', closeSingleView);
+  $('body').off('click', '#add-pin-button', addPin.buildAddPinForm);
+  $('body').off('click', '.delete-pin', removePin);
+  $('body').off('click', '.submit-pin', addPinEvent);
+  $('body').off('click', '.edit-pin', editPinEvent);
+  $('body').off('click', '#submit-edit-button', movePin);
+};
+
+export default {
+  singleViewEvents,
+  closeSingleView,
+  singleViewActionEvents,
+  removeSingleViewActionEvents,
+};
