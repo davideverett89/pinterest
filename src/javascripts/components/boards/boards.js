@@ -75,9 +75,21 @@ const removeBoard = (e) => {
 
 const boardEvents = () => {
   $('body').on('click', '#add-board', addBoardEvent);
-  $('#show-add-board-form-button').click(addBoard.buildAddBoardForm);
+  $('body').on('click', '#show-add-board-form-button', addBoard.buildAddBoardForm);
   $('body').on('click', '.single-view-button', singleView.singleViewEvents);
   $('body').on('click', '.delete-board-button', removeBoard);
 };
 
-export default { printBoards, boardEvents, addBoardEvent };
+const removeBoardEvents = () => {
+  $('body').off('click', '#add-board', addBoardEvent);
+  $('body').off('click', '#show-add-board-form-button', addBoard.buildAddBoardForm);
+  $('body').off('click', '.single-view-button', singleView.singleViewEvents);
+  $('body').off('click', '.delete-board-button', removeBoard);
+};
+
+export default {
+  printBoards,
+  boardEvents,
+  addBoardEvent,
+  removeBoardEvents,
+};

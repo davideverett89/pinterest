@@ -8,8 +8,6 @@ import home from './components/home/home';
 import auth from './components/auth/auth';
 import authData from './helpers/data/authData';
 import logout from './components/logout/logout';
-import boards from './components/boards/boards';
-import singleView from './components/singleView/singleView';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -17,8 +15,6 @@ const init = () => {
   auth.createSignInButton();
   authData.checkLoginStatus();
   logout.logoutEvent();
-  boards.boardEvents();
-  singleView.singleViewActionEvents();
 };
 
 init();
